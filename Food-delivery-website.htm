@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+    
+<html lang="en" dir="ltr">
+    <head>
+        <style>
+            *{
+                padding: 0;;
+                margin: 0;
+                text-decoration: none;
+                list-style: none;
+                box-sizing: border-box;
+            }
+            /* body{
+                font-family: ;
+            } */
+
+            nav{
+                background: #0082e6;
+                width: 100%;
+            }
+            label.logo{
+                color: white;
+                font-size: 35px;
+                line-height: 80px;
+                padding: 0 100px;
+                font-weight: bold;
+            }
+            nav ul{
+                float:right;
+                margin-right: 20px;
+            }
+            nav ul li{
+                display: inline-block;
+                line-height: 80px;
+                margin: 0 5px;
+            }
+            nav ul li a{
+                color: white;
+                padding: 7px 13px;
+                border-radius: 3px;
+                font-size: 17px;
+                text-transform: uppercase;
+            }
+            a.ctive,a:hover{
+                background: #1b9bff;
+                transition: .5s;
+            }
+            .checkbtn{
+                font-size: 30px;
+                color: white;
+                float: right;
+                line-height: 80px ;
+                margin-right: 40px;
+                cursor: pointer;
+                display: none;
+            }
+            #check{
+                display: none;
+            }
+@media (max-width: 952px){
+    label.logo{
+        font-size: 30px;
+        padding-left: 50px;
+    }
+    nav ul li a{
+        font-size: 16px;
+    }
+}
+@media(max-width: 858px){
+    .checkbtn{
+        display: block;
+    }
+    ul{
+        position:fixed;
+        width: 100%;
+        height: 100vh;
+        background: #2c3e50;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+    nav ul li{
+        /* display: block; */
+        margin: 50px;
+        line-height: 30px;
+
+    }
+    nav ul li a{
+        font-size:20px;
+    }
+    a:hover,a.active{
+        background: none;
+        color: #0082e6;
+    }
+    #check:checked ~ ul{
+        left: 0;
+    }
+
+
+}
+            
+        </style>
+        
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  
+        <script>
+            function orderNow(){
+                document.getElementById("orderForm").style.display="block";
+            }
+            function placeOrder(){
+                document.getElementById("orderSummary").style.display="block";
+
+
+                Uname=document.getElementById("txtName");
+                Mobile=document.getElementById("mobile");
+                Burger=document.getElementById("optBurger");
+                Roller=document.getElementById("optRoller");
+                 Fries=document.getElementById("optFries");
+
+                var mcost=0;
+                var acost=0;
+                var mname=" ";
+                var aname=" ";
+                if(Burger.checked){
+                    mcost=120;
+                    mname=Burger.value;
+
+                }
+                if(Roller.checked){
+                    mcost=100;
+                    mname=Roller.value;
+
+                }
+                if(Fries.checked){
+                    acost=60;
+                    mcost += acost;
+                    aname += Fries.value+"<br>";
+                }
+
+                document.getElementById("lblName").innerHTML=Uname.value;
+            document.getElementById("lblMobile").innerHTML=Mobile.value;
+            document.getElementById("lblMeal").innerHTML=mname;
+            document.getElementById("lblAdd").innerHTML=aname;
+            document.getElementById("lblAmount").innerHTML=mcost;
+
+            }
+
+            
+
+
+
+        </script>
+
+    </head>
+    <body >
+
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <label class="logo">Roys by Roles</label>
+            <ul>
+                <li><a id="home">Home</a></li>
+                <li><a id="about">About</a></li>
+                <li><a id="services">Service</a></li>
+                <li><a id="contact">Contact</a></li>
+                <li><a id="login">Login</a></li>
+
+            </ul>
+        </nav>
+
+
+        <div >    
+                <div style="background-image: url('cuisine-food-india-indian-wallpaper-preview.jpg');background-size: cover;height: calc(100vh - -70px);" >
+        
+                      
+              <div class="container" style="text-align: center;color: white;padding-top: 234px;">
+                <h3 >Khaddu Khatega Tho Sabmhe Bategha</h3>
+                <h5>"If you talk about food just as much as you eat it,yeah you're in good company.<br> We've got famous chefs and stars to fulfill your taste"</h5>
+                <br>
+                <a href="#order" onclick="orderNow()" style="background-color: #1b9bff;padding: 5px;border:  2px solid black; border-radius: 16px;color: white;" >Order now</a>
+              </div></div>
+              
+              
+              
+        </div>
+        <div class="container" style="text-align: center;" >
+            
+                <table   align="center" id="orderForm" style="display: none;">
+                    
+                    <tr id="order">
+                        <td colspan="2">Customer details</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Name</td>
+                        <td><input type="text" id="txtName"></td>
+                    </tr>
+                    <tr>
+                        <td>Customer Mobile Number</td>
+                        <td><input type="text" id="mobile"></td>
+
+                    </tr>
+                    <tr>
+                        <td>Select a meal</td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="burger.jpg" width="100" height="100" alt="">
+                            <br>
+                            <input type="radio" name="meal" id="optBurger" value="omgBurger"> Burger(&#8377;120/-)
+                        </td>
+                        <td>
+                            <img src="roller.jpg" width="100" height="100" alt="">
+                            <br>
+                            <input type="radio" name="meal" id="optRoller" value="omgRoller">Roller(&#8377;100/-)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Select Ad-on's </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="fries.jpg" width="100" height="100" alt="">
+                            <br>
+                            <input type="checkbox" id="optFries" value="largeFries">Large fries(&#8377;60/-)
+                        </td>
+                    </tr>
+                     
+                    <tr>
+                        <td>
+                            <br>
+                            <a href="#orderSummary" onclick="placeOrder()" style="background-color: #1b9bff;padding: 5px;border:  1px solid black; border-radius: 8px;color: black;" >Place Oredr</a>
+                            
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <dl id="orderSummary" style="display: none;">
+                    <h2>Order Summary</h2>
+                    <dt>Customer Name</dt>
+                    <dd id="lblName"></dd>
+                    <dt>Mobile Number</dt>
+                    <dd id="lblMobile"></dd>
+                    <dt>Meal</dt>
+                    <dd id="lblMeal"> </dd>
+                    <dt>Ad-on's</dt>
+                    <dd id="lblAdd"></dd>
+                    <dt>Total Bill Amount</dt>
+                    <dd id="lblAmount"></dd>
+                    <br>
+                    <input type="button" value="Print bill" onclick="window.print()" style="background-color: #1b9bff;">
+
+                
+                </dl>
+
+        </div>
+        <!-- Footer -->
+<footer class="page-footer font-small blue pt-4" style="background-color: black;">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+  
+      <div class="row">
+  
+        <div class="col-md-6 mt-md-0 mt-3">
+  
+          <!-- Content -->
+          <p style="color: grey;">Here you can use rows and columns to organize your footer content.</p>
+  
+        </div>
+        <!-- Grid column -->
+  
+  
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+  
+          <!-- Links -->
+  
+          <ul class="list-unstyled" >
+            <li><a href="#home"style="color: white;">Home</a></li>
+            <li><a href="#about"style="color: white;">About</a></li>
+            <li><a href="#services"style="color: white;">Services</a></li>
+            <li><a href="#contact"style="color: white;">Contact</a></li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+        
+  
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3" >
+  
+            <!-- Links -->
+    
+            <ul class="list-unstyled">
+              <li><a href="#!" style="color: white;">Link</a></li>
+              <li><a href="#!" style="color: white;">Link</a></li>
+              <li><a href="#!"style="color: white;">Link </a></li>
+              <li><a href="#!"style="color: white;">Link </a></li>
+            </ul>
+    
+          </div>
+        
+  
+      </div>
+      
+  
+    </div>
+    <!-- Footer Links -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3" style="padding-bottom: 10px;">© 2021 Copyright:
+      <a href="#">Roysbyroles.com</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+    </body>
+</html>
